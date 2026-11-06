@@ -1,0 +1,796 @@
+{
+  "maps": [
+    {
+      "key": "castle",
+      "name": "CASTLE",
+      "desc": "Torchlit halls of gold",
+      "theme": "castle",
+      "w": 60,
+      "h": 44,
+      "grid": [
+        "############################################################",
+        "#...........#...........#...........#...........#.,........#",
+        "#...........#...........#...........t...........#.......,..#",
+        "#..x.....x..#...........#..x,....x..#,..........#..........#",
+        "#...........#...........#...........#...........#..........#",
+        "#,..........#...........#...........#......................#",
+        "#...........#.,.,.......#...........#......................#",
+        "#.........,.#...........#....,......#................,.....#",
+        "#..x....,x..#...,.......#..x.....x..#...........#..........#",
+        "#...........#...........#...........#...........#..........#",
+        "########...######...####################...#################",
+        "#...........#.....,.....#........,..#,..........#..........#",
+        "#,..........#...........#..ccccccc..#..........,t....,.....#",
+        "#...........#...........#..ccccccc..t...........#......,...#",
+        "#.,.........#...,.......#..ccccccc..#...........#..........#",
+        "#...........#...........#..ccccccc..#...........#..........#",
+        "#...........#..............ccccccc..............#..........#",
+        "#......,...................ccccccc..............#..........#",
+        "#.,........................ccccccc..............t..........#",
+        "#.......................#..ccccccc..#,......,...t.....,....#",
+        "#.,.........#...........#...........#...........t.....,....#",
+        "###...#########################...#######..,################",
+        "#....,......#...........#...........#...........#,.........#",
+        "#...........t...........#..ccccccc..t...........#..........#",
+        "#...........#..x.....x..t..ccccccc..#..x.....x..#..x.....x.#",
+        "#.......................#..ccccccc..#..........,...........#",
+        "#..,.......................ccccccc..#..,........,...,......#",
+        "#..........................ccccccc..#........,...........,.#",
+        "#...........#..............ccccccc..#..........,#..........#",
+        "#...........#..x.....x..#..ccccccc..#..x.....x..t..x.....x.#",
+        "#...........#.,.,.......#..ccccccc..#.,.,.......#..........#",
+        "#.......,...#...,.......#.,.........#.....,.....#..........#",
+        "##,..###t#######...#########t###...###########t#############",
+        "#...........#...........#,..........#....,......#..........#",
+        "#...,.......#...........#...........t...........#..........#",
+        "#...........#..x.....x..#...........t..x.....x..#..........#",
+        "#...........#...........#.......................#..........#",
+        "#....,......#....,......#.......................#..........#",
+        "#...........#...........t.......................#,.........#",
+        "#,..........#...........#,..........#...........#..........#",
+        "#...........#..x.....x..#...........#..x.....x..#..........#",
+        "#,....,.....#...........#...........#..........,#..........#",
+        "#...........#...........t........,..#...........#..........#",
+        "############################################################"
+      ],
+      "solid": [
+        "#",
+        "t",
+        "x"
+      ],
+      "slow": [],
+      "spawn": {
+        "x": 488,
+        "y": 264
+      },
+      "preferred": {
+        "x": 30,
+        "y": 16
+      },
+      "totalPoints": 56,
+      "coins": [
+        {
+          "x": 536,
+          "y": 392,
+          "kind": "gold",
+          "phase": 1.7825944595744074
+        },
+        {
+          "x": 904,
+          "y": 72,
+          "kind": "gold",
+          "phase": 1.2958334158402658
+        },
+        {
+          "x": 840,
+          "y": 360,
+          "kind": "gold",
+          "phase": 1.2347174529722416
+        },
+        {
+          "x": 168,
+          "y": 552,
+          "kind": "gold",
+          "phase": 6.235899774758789
+        },
+        {
+          "x": 56,
+          "y": 392,
+          "kind": "gem",
+          "phase": 5.124938467721058
+        },
+        {
+          "x": 200,
+          "y": 280,
+          "kind": "gold",
+          "phase": 5.284381640003459
+        },
+        {
+          "x": 248,
+          "y": 504,
+          "kind": "gold",
+          "phase": 3.746694502350616
+        },
+        {
+          "x": 616,
+          "y": 376,
+          "kind": "gold",
+          "phase": 0.5711906864647969
+        },
+        {
+          "x": 520,
+          "y": 488,
+          "kind": "gold",
+          "phase": 0.7573473119497491
+        },
+        {
+          "x": 56,
+          "y": 680,
+          "kind": "gem",
+          "phase": 0.3018897336848792
+        },
+        {
+          "x": 232,
+          "y": 648,
+          "kind": "gold",
+          "phase": 1.6854405353292101
+        },
+        {
+          "x": 504,
+          "y": 680,
+          "kind": "gold",
+          "phase": 4.13039905752835
+        },
+        {
+          "x": 312,
+          "y": 168,
+          "kind": "gold",
+          "phase": 1.6941907969555867
+        },
+        {
+          "x": 728,
+          "y": 232,
+          "kind": "gold",
+          "phase": 3.205000453179159
+        },
+        {
+          "x": 120,
+          "y": 392,
+          "kind": "gem",
+          "phase": 4.999620080347207
+        },
+        {
+          "x": 72,
+          "y": 136,
+          "kind": "gold",
+          "phase": 0.6089144429535314
+        },
+        {
+          "x": 152,
+          "y": 248,
+          "kind": "gold",
+          "phase": 3.461745317599026
+        },
+        {
+          "x": 232,
+          "y": 376,
+          "kind": "gold",
+          "phase": 4.801442959828959
+        },
+        {
+          "x": 712,
+          "y": 632,
+          "kind": "gold",
+          "phase": 4.588561739557364
+        },
+        {
+          "x": 840,
+          "y": 104,
+          "kind": "gem",
+          "phase": 3.1379228314241123
+        },
+        {
+          "x": 664,
+          "y": 568,
+          "kind": "gold",
+          "phase": 0.6232665324328089
+        },
+        {
+          "x": 616,
+          "y": 456,
+          "kind": "gold",
+          "phase": 3.074097390666887
+        },
+        {
+          "x": 792,
+          "y": 408,
+          "kind": "gold",
+          "phase": 4.628961151269307
+        },
+        {
+          "x": 440,
+          "y": 616,
+          "kind": "gold",
+          "phase": 6.050883196944256
+        },
+        {
+          "x": 40,
+          "y": 616,
+          "kind": "gem",
+          "phase": 4.5908317656330615
+        },
+        {
+          "x": 648,
+          "y": 40,
+          "kind": "gold",
+          "phase": 5.351256840709714
+        },
+        {
+          "x": 648,
+          "y": 296,
+          "kind": "gold",
+          "phase": 0.8414731826670807
+        },
+        {
+          "x": 696,
+          "y": 504,
+          "kind": "gold",
+          "phase": 5.150508213032156
+        },
+        {
+          "x": 904,
+          "y": 376,
+          "kind": "gold",
+          "phase": 0.7206730602056713
+        },
+        {
+          "x": 568,
+          "y": 568,
+          "kind": "gem",
+          "phase": 1.8881683755974878
+        },
+        {
+          "x": 680,
+          "y": 424,
+          "kind": "gold",
+          "phase": 2.846369933521363
+        },
+        {
+          "x": 312,
+          "y": 504,
+          "kind": "gold",
+          "phase": 0.29203815221839635
+        }
+      ]
+    },
+    {
+      "key": "forest",
+      "name": "FOREST",
+      "desc": "Mossy paths & fireflies",
+      "theme": "forest",
+      "w": 60,
+      "h": 44,
+      "grid": [
+        "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+        "T.................TTT..,.,.......pp,....*.,..........,.....T",
+        "T......T.........TTTTT.......b..*.pp...*...*.....*.......*.T",
+        "T.....TTT,....,..TTTTT,,.*..,......pp,......,...*..,.......T",
+        "T..r*TTTTT.,.,..TTTTTTT.........*...pp............,b....,b.T",
+        "T....*TTT........TTTTT..............pp.......*....b........T",
+        "T......T.,...T*..TTTTT..T.....,.*..*.pp...,.*.......*......T",
+        "T,..,T,*....TTT.,.TTTTTTTTTT........pp.,..,..........,.*.*.T",
+        "T...TTT.....TTT.*..TTTTTTTTTT.....TTppT...*..w....,......,.T",
+        "T..*TTT....bTTT,...*.TTTTTTT.....TTppTTT.wwwwwww.,..*..,..,T",
+        "T...TTT.,,.TTTTT..,.....T.......TTppTTTTwwwwwwwww.*......*.T",
+        "T..TTTTT....TTT.r.....,..........ppTTTTwwwwwwwwww.........,T",
+        "T...TTT.....TTT.....,..,..*.,..pp.TTTTT.wwwwwwwww.T...*....T",
+        "T...TTT*.T..TTTT,......,.*.,..pp*...T....wwwwwwwTTTTT..*...T",
+        "T,..TTT.TTT,.TTTT.......,..,pp..,..............TTTTTTT,.,..T",
+        "T....T,.TTT..TTTTT*..,...,.pp..............,..TTTppppTT....T",
+        "T.....,TTTTT.TTTTT........pp.............*,....Tppppppp...,T",
+        "T.*...,.TTT.TTTTTTT.....,pp...................TppTTTTppp...T",
+        "T...,...TTT.bTTTTT.....,pp...........*........ppTTTT...pp.,T",
+        "T,.......T...TTTTT..pppppp...,....,...,....,.ppTTTTT,.*.p.,T",
+        "T.,.r.........TTT.pppppppp........,...*,.....p*.TTT......p.T",
+        "T....,......*..T.ppp...,pp..,,...,...b......p....T.......ppT",
+        "T.......*.....,.pp..b*..*pp.,,.............pp....r....T,..pT",
+        "T.....,..*......p...,.....pp,...*..........p.....,..rTTT..*T",
+        "Tp,......,.....p.....,.....pp*.....,......p......,..TTTTT..T",
+        "Tpp,...*......pp............pp...........pp.*..,,..,.TTTT.,T",
+        "T.pp.........pp.,..*........*pp..,.....,.p.......,*.*TTTTT.T",
+        "T..pp....,..ppw....,......b...pp..,.*...p,*..T*.,.*..TTTTT.T",
+        "T...pp..b..pwwwwwww...,..*..,..pp......pp,.TTTTT....TTTTTTTT",
+        "T,...pppppwwwwwwwwww...,..,r...ppp.b.ppp,..TTTTTT.,..TTTTT.T",
+        "T.....ppppwwwwwwwwwww.........*.,pppppp.,TTTTTTTTT,.,TTTTT.T",
+        "T........wwwwwwwwwwwww..T........pppp*....TTTTTTT.....TTT..T",
+        "T.........wwwwwwwwwwwbTTT........pp....*...TTTTT....,..T...T",
+        "T...,.....wwwwwwwwwww.TTT..*,,...pp.*........T.r....,...*..T",
+        "T....**.....wwwwwww..TTTT...,...pp..............w..,....*..T",
+        "T*.....,...,.,.w......TTT.......pp..*,.........wwwww,......T",
+        "T.,.T...*...*..*......TTTTTT...pp.........*...wwwwwww....,.T",
+        "T..TTT........,.*.,..*.TTTTT..pp.............wwwwwwwww.....T",
+        "T.TTTTT..............,TTTTTTTpp...,.*.....,...wwwwwww......T",
+        "T..TTT...*.b.,..,.,.bTTTTTTTpp........,,......wwwwwww......T",
+        "T*..T.,...,.....*..*..TTTTTpp.............*,*.....w........T",
+        "T.........,,,..........TTTpp...*................*..........T",
+        "T.................,....,.pp...............,...,..,,........T",
+        "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+      ],
+      "solid": [
+        "T",
+        "b",
+        "r",
+        "w"
+      ],
+      "slow": [],
+      "spawn": {
+        "x": 488,
+        "y": 360
+      },
+      "preferred": {
+        "x": 30,
+        "y": 22
+      },
+      "totalPoints": 56,
+      "coins": [
+        {
+          "x": 456,
+          "y": 568,
+          "kind": "gold",
+          "phase": 0.6617006146466039
+        },
+        {
+          "x": 72,
+          "y": 344,
+          "kind": "gold",
+          "phase": 3.3033521547680187
+        },
+        {
+          "x": 664,
+          "y": 584,
+          "kind": "gold",
+          "phase": 2.698377420422022
+        },
+        {
+          "x": 184,
+          "y": 392,
+          "kind": "gold",
+          "phase": 0.864072879509453
+        },
+        {
+          "x": 616,
+          "y": 344,
+          "kind": "gem",
+          "phase": 6.240861248258362
+        },
+        {
+          "x": 936,
+          "y": 120,
+          "kind": "gold",
+          "phase": 3.5780613708580975
+        },
+        {
+          "x": 856,
+          "y": 328,
+          "kind": "gold",
+          "phase": 4.859899224984184
+        },
+        {
+          "x": 696,
+          "y": 632,
+          "kind": "gold",
+          "phase": 2.502206958300579
+        },
+        {
+          "x": 824,
+          "y": 104,
+          "kind": "gold",
+          "phase": 2.4823405585795744
+        },
+        {
+          "x": 904,
+          "y": 344,
+          "kind": "gem",
+          "phase": 3.8744690370157167
+        },
+        {
+          "x": 744,
+          "y": 56,
+          "kind": "gold",
+          "phase": 2.1537094548264375
+        },
+        {
+          "x": 728,
+          "y": 344,
+          "kind": "gold",
+          "phase": 4.936690527695889
+        },
+        {
+          "x": 792,
+          "y": 440,
+          "kind": "gold",
+          "phase": 4.2419480956735365
+        },
+        {
+          "x": 808,
+          "y": 248,
+          "kind": "gold",
+          "phase": 3.074658295402249
+        },
+        {
+          "x": 568,
+          "y": 408,
+          "kind": "gem",
+          "phase": 1.4318708102523559
+        },
+        {
+          "x": 456,
+          "y": 408,
+          "kind": "gold",
+          "phase": 1.166925214753408
+        },
+        {
+          "x": 200,
+          "y": 248,
+          "kind": "gold",
+          "phase": 3.2261063716853817
+        },
+        {
+          "x": 40,
+          "y": 184,
+          "kind": "gold",
+          "phase": 3.810003800739868
+        },
+        {
+          "x": 504,
+          "y": 648,
+          "kind": "gold",
+          "phase": 3.0579747826384054
+        },
+        {
+          "x": 328,
+          "y": 440,
+          "kind": "gem",
+          "phase": 2.193911511574897
+        },
+        {
+          "x": 56,
+          "y": 568,
+          "kind": "gold",
+          "phase": 5.671629473470099
+        },
+        {
+          "x": 328,
+          "y": 552,
+          "kind": "gold",
+          "phase": 4.117736692558595
+        },
+        {
+          "x": 168,
+          "y": 344,
+          "kind": "gold",
+          "phase": 5.415915474755641
+        },
+        {
+          "x": 360,
+          "y": 88,
+          "kind": "gold",
+          "phase": 2.4160362850604433
+        },
+        {
+          "x": 280,
+          "y": 184,
+          "kind": "gem",
+          "phase": 5.100648826931451
+        },
+        {
+          "x": 872,
+          "y": 600,
+          "kind": "gold",
+          "phase": 2.5173469696056774
+        },
+        {
+          "x": 584,
+          "y": 152,
+          "kind": "gold",
+          "phase": 5.970295686185248
+        },
+        {
+          "x": 456,
+          "y": 152,
+          "kind": "gold",
+          "phase": 1.4427572292468325
+        },
+        {
+          "x": 808,
+          "y": 504,
+          "kind": "gold",
+          "phase": 4.134976847114518
+        },
+        {
+          "x": 168,
+          "y": 632,
+          "kind": "gem",
+          "phase": 1.1482018163344243
+        },
+        {
+          "x": 136,
+          "y": 440,
+          "kind": "gold",
+          "phase": 5.689205702733454
+        },
+        {
+          "x": 712,
+          "y": 136,
+          "kind": "gold",
+          "phase": 1.3445548360029789
+        }
+      ]
+    },
+    {
+      "key": "sea",
+      "name": "SEA",
+      "desc": "Sunken isles & shells",
+      "theme": "sea",
+      "w": 60,
+      "h": 44,
+      "grid": [
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwWWWwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwWWWWWsWWWWwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwWWPssssssSWWWwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwWWWWWwwwwwwwwWWsssssssssssWwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwWWWWsWsWWWWwwwwwWssssssrssSssWWwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwWWssssssssSWWwwwwWsssssSsssssssBBBBBBBBBBBwwwwwwwwwwwww",
+        "wwwwwWsssssssssssWWwwwWssssssssssssBBBBBBBBBBBBWWWwwwwwwwwww",
+        "wwwwWWssssssssssssWwwwWWWsssssssSssWwwwwWWsssssssWWwwwwwwwww",
+        "wwwwWssPsssssssssBBBBBBBBsssssssssWWwwwwWsssssssssWwwwwwwwww",
+        "wwwwWWsssssssssssBBBBBBBBBBBBBWWWWWwwwwwWssssssssSWWwwwwwwww",
+        "wwwwwWsssssssssssWwwwwwwwwwwwwwwwwwwwwBBBssssSsssssWwwwwwwww",
+        "wwwwwWWssssssssWWWwwwwwwwwwwwwwwwwwwwwBBBsssssssssWWwwwwwwww",
+        "wwwwwwWWWWWBBWWWwwwwwwwwwwwwwwwwwwwwwwBBWsssPsssssWwwwwwwwww",
+        "wwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwwwwwwwwBBWWssPssSWWWwwwwwwwww",
+        "wwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwwwwwwwwBBwWWWWWWWWwwwwwwwwwww",
+        "wwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwBBwWWWWwwwwwwwwwwwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwBBWWssWWWwwwwwwwwwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwWBsssssssWWwwwwwwwwwwwwwwwwwBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwWWsssssSsssWWwwwwwwwwwwwwwWWWBBwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwWsssssssssssWWwwwwwwwwwwWWWsWsBWWWWwwwwwwwwwwwwwwww",
+        "wwwwwwwwWWsSssssssssssWwwwwwwwwWWWsssssssssWWwwwwwwwwwwwwwww",
+        "wwwwwwwwWsssssssssssssWwwwwwwwwWsssrssssssPrWWwwwwwwwwwwwwww",
+        "wwwwwwwwWsssssPsSPsssWWwwwwwwwWWsssssssssssssWWwwwwwwwwwwwww",
+        "wwwwwwwwWWsssssSsSsssBBBBBBBBBBsssrssSssssssssWwwwwwwwwwwwww",
+        "wwwwwwwwwWWsssssssssBBBBBBBBBBBBssPsssssPssssWWwwwwwwwwwwwww",
+        "wwwwwwwwwwWWssssSssWWwwwwwwwwwwWWsssssssssssWWwwwwwwwwwwwwww",
+        "wwwwwwwwwwwWWWWsWWWWwwwwwwwwwwwwWWssssssssssWwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwWWWwwwwwwwwwwwwwwwwWWWWWWsSWWWWwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwWWWWwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+      ],
+      "solid": [
+        "w",
+        "r",
+        "P"
+      ],
+      "slow": [
+        "W"
+      ],
+      "spawn": {
+        "x": 168,
+        "y": 184
+      },
+      "preferred": {
+        "x": 10,
+        "y": 11
+      },
+      "totalPoints": 56,
+      "coins": [
+        {
+          "x": 568,
+          "y": 536,
+          "kind": "gold",
+          "phase": 6.174058887706192
+        },
+        {
+          "x": 664,
+          "y": 568,
+          "kind": "gold",
+          "phase": 6.225300588025832
+        },
+        {
+          "x": 632,
+          "y": 280,
+          "kind": "gold",
+          "phase": 6.269035877204748
+        },
+        {
+          "x": 600,
+          "y": 456,
+          "kind": "gold",
+          "phase": 0.681145462819723
+        },
+        {
+          "x": 472,
+          "y": 536,
+          "kind": "gem",
+          "phase": 5.372868529494727
+        },
+        {
+          "x": 168,
+          "y": 456,
+          "kind": "gold",
+          "phase": 0.611324802371819
+        },
+        {
+          "x": 424,
+          "y": 536,
+          "kind": "gold",
+          "phase": 4.791429142210403
+        },
+        {
+          "x": 712,
+          "y": 152,
+          "kind": "gold",
+          "phase": 0.222947863861993
+        },
+        {
+          "x": 408,
+          "y": 104,
+          "kind": "gold",
+          "phase": 2.6183099082830434
+        },
+        {
+          "x": 808,
+          "y": 200,
+          "kind": "gem",
+          "phase": 3.603384030768525
+        },
+        {
+          "x": 120,
+          "y": 232,
+          "kind": "gold",
+          "phase": 0.026014440222997655
+        },
+        {
+          "x": 616,
+          "y": 536,
+          "kind": "gold",
+          "phase": 2.495049121039355
+        },
+        {
+          "x": 472,
+          "y": 168,
+          "kind": "gold",
+          "phase": 1.733617608063382
+        },
+        {
+          "x": 184,
+          "y": 360,
+          "kind": "gold",
+          "phase": 2.016284624519216
+        },
+        {
+          "x": 136,
+          "y": 504,
+          "kind": "gem",
+          "phase": 2.68750626112603
+        },
+        {
+          "x": 152,
+          "y": 552,
+          "kind": "gold",
+          "phase": 0.2865188987764796
+        },
+        {
+          "x": 712,
+          "y": 568,
+          "kind": "gold",
+          "phase": 1.683236570245218
+        },
+        {
+          "x": 456,
+          "y": 56,
+          "kind": "gold",
+          "phase": 4.41474146921112
+        },
+        {
+          "x": 760,
+          "y": 216,
+          "kind": "gold",
+          "phase": 0.20142283102940464
+        },
+        {
+          "x": 520,
+          "y": 184,
+          "kind": "gem",
+          "phase": 2.367138586195015
+        },
+        {
+          "x": 536,
+          "y": 88,
+          "kind": "gold",
+          "phase": 1.7805417265726955
+        },
+        {
+          "x": 632,
+          "y": 616,
+          "kind": "gold",
+          "phase": 2.662674739387764
+        },
+        {
+          "x": 360,
+          "y": 152,
+          "kind": "gold",
+          "phase": 1.8428557813117696
+        },
+        {
+          "x": 616,
+          "y": 232,
+          "kind": "gold",
+          "phase": 1.1780866374771797
+        },
+        {
+          "x": 184,
+          "y": 296,
+          "kind": "gem",
+          "phase": 5.796399123198253
+        },
+        {
+          "x": 280,
+          "y": 216,
+          "kind": "gold",
+          "phase": 1.7927672422602103
+        },
+        {
+          "x": 216,
+          "y": 536,
+          "kind": "gold",
+          "phase": 3.691705452521684
+        },
+        {
+          "x": 648,
+          "y": 488,
+          "kind": "gold",
+          "phase": 0.549846546378546
+        },
+        {
+          "x": 648,
+          "y": 136,
+          "kind": "gold",
+          "phase": 4.583946715780242
+        },
+        {
+          "x": 552,
+          "y": 488,
+          "kind": "gem",
+          "phase": 0.921178504085076
+        },
+        {
+          "x": 232,
+          "y": 168,
+          "kind": "gold",
+          "phase": 3.443556495778732
+        },
+        {
+          "x": 280,
+          "y": 472,
+          "kind": "gold",
+          "phase": 0.5733687037708172
+        }
+      ]
+    }
+  ]
+}

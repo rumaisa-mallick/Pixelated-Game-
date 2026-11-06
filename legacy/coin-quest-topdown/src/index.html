@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coin Quest — Pixel Coin Collector</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="stage">
+        <canvas id="game" width="640" height="480"></canvas>
+
+        <div id="ui-layer">
+            <div class="fx-scanlines"></div>
+            <div class="fx-vignette"></div>
+
+            <!-- ============ IN-GAME HUD ============ -->
+            <div id="hud" class="hidden">
+                <div class="hud-top">
+                    <div class="panel hud-coins">
+                        <span class="coin-chip"></span>
+                        <span id="hud-coins">0/0</span>
+                        <span class="hud-sep"></span>
+                        <span id="hud-score">0</span>
+                        <span class="hud-unit">PTS</span>
+                        <span id="hud-combo" class="hud-combo hidden">x2</span>
+                    </div>
+                    <div class="panel hud-realm" id="hud-realm">CASTLE</div>
+                    <div class="hud-actions">
+                        <div class="panel hud-timer" id="hud-timer">00:00</div>
+                        <button class="pixel-icon" id="btn-sound" title="Sound (M)">SFX</button>
+                        <button class="pixel-icon" id="btn-pause" title="Pause (Esc)">II</button>
+                    </div>
+                </div>
+
+                <div class="panel minimap-wrap">
+                    <div class="minimap-label">REALM MAP</div>
+                    <canvas id="minimap" width="120" height="88"></canvas>
+                </div>
+
+                <div class="map-nav">
+                    <button class="map-tab is-active" data-map="castle">CASTLE</button>
+                    <button class="map-tab" data-map="forest">FOREST</button>
+                    <button class="map-tab" data-map="sea">SEA</button>
+                </div>
+
+                <div class="touch-pad">
+                    <button class="touch-up" data-key="ArrowUp" aria-label="Move up">▲</button>
+                    <button class="touch-left" data-key="ArrowLeft" aria-label="Move left">◀</button>
+                    <button class="touch-down" data-key="ArrowDown" aria-label="Move down">▼</button>
+                    <button class="touch-right" data-key="ArrowRight" aria-label="Move right">▶</button>
+                </div>
+            </div>
+
+            <!-- ============ TITLE ============ -->
+            <div id="title-screen" class="screen screen-title">
+                <div class="title-inner">
+                    <p class="kicker">A POCKET-SIZED TREASURE HUNT</p>
+                    <h1 class="logo"><span class="logo-coin">COIN</span><span class="logo-quest">QUEST</span></h1>
+                    <p class="tagline">THREE REALMS &middot; ONE GREEDY HERO</p>
+
+                    <div class="realm-grid">
+                        <button class="realm-card" data-map="castle">
+                            <span class="realm-art">
+                                <canvas class="realm-preview" width="168" height="124"></canvas>
+                                <span class="realm-num">I</span>
+                            </span>
+                            <span class="realm-meta">
+                                <span class="realm-name">CASTLE</span>
+                                <span class="realm-desc">Torchlit halls of gold</span>
+                                <span class="realm-best" data-best="castle">UNEXPLORED</span>
+                            </span>
+                        </button>
+
+                        <button class="realm-card" data-map="forest">
+                            <span class="realm-art">
+                                <canvas class="realm-preview" width="168" height="124"></canvas>
+                                <span class="realm-num">II</span>
+                            </span>
+                            <span class="realm-meta">
+                                <span class="realm-name">FOREST</span>
+                                <span class="realm-desc">Mossy paths &amp; fireflies</span>
+                                <span class="realm-best" data-best="forest">UNEXPLORED</span>
+                            </span>
+                        </button>
+
+                        <button class="realm-card" data-map="sea">
+                            <span class="realm-art">
+                                <canvas class="realm-preview" width="168" height="124"></canvas>
+                                <span class="realm-num">III</span>
+                            </span>
+                            <span class="realm-meta">
+                                <span class="realm-name">SEA</span>
+                                <span class="realm-desc">Sunken isles &amp; shells</span>
+                                <span class="realm-best" data-best="sea">UNEXPLORED</span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="start-hint">CLICK A REALM &middot; OR PRESS ENTER</div>
+                    <div class="key-hints">
+                        <span>WASD / ARROWS</span> MOVE
+                        <span>SHIFT</span> SPRINT
+                        <span>ESC</span> PAUSE
+                    </div>
+                    <div class="title-total"><span id="total-coins">0</span> COINS COLLECTED ALL-TIME</div>
+                </div>
+            </div>
+
+            <!-- ============ PAUSE ============ -->
+            <div id="pause-screen" class="screen hidden">
+                <div class="panel modal">
+                    <p class="modal-kicker">THE PURSE WAITS</p>
+                    <h2 class="modal-title">PAUSED</h2>
+                    <div class="modal-actions">
+                        <button id="btn-resume" class="pixel-btn primary">RESUME</button>
+                        <button id="btn-restart" class="pixel-btn">RESTART REALM</button>
+                        <button id="btn-quit" class="pixel-btn">ALL REALMS</button>
+                        <button id="btn-sound2" class="pixel-btn">SOUND: ON</button>
+                    </div>
+                    <p class="modal-hint">ESC TO RESUME</p>
+                </div>
+            </div>
+
+            <!-- ============ COMPLETE ============ -->
+            <div id="complete-screen" class="screen hidden">
+                <div class="panel modal complete-modal">
+                    <p class="modal-kicker">REALM CLEARED</p>
+                    <h2 class="modal-title" id="complete-realm">CASTLE</h2>
+
+                    <div class="result-grid">
+                        <div class="result-cell">
+                            <span class="result-label">SCORE</span>
+                            <span class="result-value" id="res-score">0</span>
+                        </div>
+                        <div class="result-cell">
+                            <span class="result-label">TIME</span>
+                            <span class="result-value" id="res-time">00:00</span>
+                        </div>
+                        <div class="result-cell">
+                            <span class="result-label">COINS</span>
+                            <span class="result-value" id="res-coins">0/0</span>
+                        </div>
+                        <div class="result-cell">
+                            <span class="result-label">BEST</span>
+                            <span class="result-value" id="res-best">0 PTS</span>
+                        </div>
+                        <div class="result-cell result-wide">
+                            <span class="result-label">MAX COMBO</span>
+                            <span class="result-value" id="res-combo">x1</span>
+                        </div>
+                    </div>
+
+                    <p id="new-best" class="new-best hidden">NEW BEST!</p>
+
+                    <div class="modal-actions">
+                        <button id="btn-next" class="pixel-btn primary">NEXT REALM</button>
+                        <button id="btn-retry" class="pixel-btn">RETRY</button>
+                        <button id="btn-all" class="pixel-btn">ALL REALMS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/rng.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/entities.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

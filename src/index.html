@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102033">
+  <title>Gilded Isles — A Coin Collector's Tale</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/polish.css">
+</head>
+<body>
+  <main id="page">
+    <div id="stage" role="application" aria-label="Gilded Isles">
+      <canvas id="game" width="640" height="360" aria-hidden="true"></canvas>
+
+      <div id="ui">
+        <section id="screen-title" class="screen title-screen" aria-label="Title screen">
+          <div class="title-sparks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="title-head">
+            <div class="kicker"><i></i><span>A POCKET-SIZED TREASURE HUNT</span><i></i></div>
+            <h1 class="logo" aria-label="Gilded Isles"><span class="logo-a">GILDED</span><span class="logo-b">ISLES</span></h1>
+            <p class="tagline">Three wild shores. One cursed hoard.</p>
+            <p class="tagline-sub"><span>COLLECT</span><b>◆</b><span>SURVIVE</span><b>◆</b><span>BREAK THE CURSE</span></p>
+          </div>
+
+          <div id="realm-cards" class="realm-cards" role="list" aria-label="Choose an isle"></div>
+
+          <footer class="title-foot">
+            <div class="title-stats">
+              <span class="stat-chip"><i class="stat-coin" aria-hidden="true"></i><b id="title-coins">0</b><em>COINS</em></span>
+              <span class="stat-chip stat-clear" id="title-progress">0 / 3 ISLES CLEARED</span>
+            </div>
+            <div class="title-hint"><span class="key">ENTER</span> BEGIN <span class="sep">◆</span> PICK AN ISLE</div>
+            <button id="title-sound" class="icon-btn title-sound" type="button" aria-label="Toggle sound" title="Sound">
+              <span class="sound-on" aria-hidden="true">♪</span><span class="sound-off" aria-hidden="true">×</span>
+            </button>
+          </footer>
+        </section>
+
+        <section id="screen-pause" class="screen overlay hidden" aria-label="Pause menu">
+          <div class="modal parchment pause-modal">
+            <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+            <p class="modal-kicker">THE MAP FOLDS</p>
+            <h2 class="modal-title">PAUSED</h2>
+            <p class="modal-sub"><span id="pause-isle">CROWN KEEP</span> <span class="dot">·</span> <span id="pause-time">00:00</span></p>
+            <div class="pause-grid">
+              <button class="btn primary" data-action="resume" type="button">RESUME</button>
+              <button class="btn" data-action="restart" type="button">RESTART</button>
+              <button class="btn" data-action="sound" type="button" id="pause-sound">SOUND: ON</button>
+              <button class="btn" data-action="title" type="button">WORLD MAP</button>
+            </div>
+            <p class="modal-hint">ESC / P TO RESUME</p>
+          </div>
+        </section>
+
+        <section id="screen-complete" class="screen overlay hidden" aria-label="Isle cleared">
+          <div class="modal parchment complete-modal">
+            <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+            <div class="complete-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="complete-top">
+              <div class="rank-seal" id="complete-rank">S</div>
+              <div class="complete-heading">
+                <p class="modal-kicker">ISLE CLEARED</p>
+                <h2 class="modal-title" id="complete-isle">CROWN KEEP</h2>
+                <p class="modal-sub" id="complete-flavor">Every last glimmer, claimed.</p>
+              </div>
+            </div>
+            <div class="ribbon hidden" id="complete-ribbon">NEW BEST</div>
+            <div class="result-grid">
+              <div><span>SCORE</span><b id="res-score">0</b></div>
+              <div><span>COINS</span><b id="res-coins">0/0</b></div>
+              <div><span>TIME</span><b id="res-time">00:00</b></div>
+              <div><span>BEST</span><b id="res-best">0</b></div>
+            </div>
+            <div class="medal-row" id="complete-medals" aria-label="Medals earned"></div>
+            <div class="complete-actions">
+              <button class="btn primary" id="complete-next" data-action="next" type="button">NEXT ISLE</button>
+              <button class="btn" data-action="restart" type="button">REPLAY</button>
+              <button class="btn" data-action="title" type="button">WORLD MAP</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-fail" class="screen overlay hidden" aria-label="Expedition failed">
+          <div class="modal parchment fail-modal">
+            <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+            <p class="modal-kicker">THE TIDE TOOK YOU</p>
+            <h2 class="modal-title">WASHED OUT</h2>
+            <p class="modal-sub">The isle keeps its secrets a little longer.</p>
+            <div class="fail-stat"><span>COINS RECOVERED</span><b id="fail-coins">0</b></div>
+            <div class="complete-actions">
+              <button class="btn primary" data-action="restart" type="button">TRY AGAIN</button>
+              <button class="btn" data-action="title" type="button">WORLD MAP</button>
+            </div>
+          </div>
+        </section>
+
+        <div id="hud" class="hidden" aria-live="off">
+          <div class="hud-left">
+            <div class="hud-score">SCORE <b id="hud-score">000000</b></div>
+            <div class="hud-coins"><i class="coin-icon" aria-hidden="true"></i><b id="hud-coins">0</b><span>/</span><span id="hud-total">0</span><em id="hud-combo" class="hidden">x2</em></div>
+            <div class="hud-curse" id="hud-curse" aria-label="Curse meter"><span>CURSE</span><i class="curse-pip"></i><i class="curse-pip"></i><i class="curse-pip"></i></div>
+          </div>
+          <div class="hud-center">
+            <div class="hud-isle" id="hud-isle">CROWN KEEP</div>
+            <div class="hud-track"><i id="hud-progress"></i><b id="hud-dot"></b></div>
+          </div>
+          <div class="hud-right">
+            <div class="hearts" id="hud-hearts" aria-label="Hearts"></div>
+            <div class="hud-time" id="hud-time">00:00</div>
+            <button id="btn-pause" class="icon-btn hud-btn" type="button" aria-label="Pause" title="Pause"><span class="pause-bars"></span></button>
+            <button id="btn-sound" class="icon-btn hud-btn" type="button" aria-label="Toggle sound" title="Sound">
+              <span class="sound-on" aria-hidden="true">♪</span><span class="sound-off" aria-hidden="true">×</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="isle-intro" class="isle-intro hidden" aria-hidden="true">
+          <span class="isle-intro-kicker" id="intro-kicker">ISLE I</span>
+          <strong id="intro-name">CROWN KEEP</strong>
+          <span class="isle-intro-rule"><i></i><b>◆</b><i></i></span>
+          <span class="isle-intro-objective">FIND THE GATE <b>·</b> BEWARE CURSED GOLD</span>
+        </div>
+
+        <div id="touch" class="touch hidden" aria-hidden="true">
+          <div class="touch-move">
+            <button class="touch-btn" data-touch="left" type="button" aria-label="Move left">‹</button>
+            <button class="touch-btn" data-touch="right" type="button" aria-label="Move right">›</button>
+          </div>
+          <div class="touch-actions">
+            <button class="touch-btn touch-dash" data-touch="dash" type="button" aria-label="Sprint">»</button>
+            <button class="touch-btn touch-jump" data-touch="jump" type="button" aria-label="Jump">↑</button>
+          </div>
+        </div>
+
+        <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+        <div id="flash" class="flash"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="rotate" class="rotate" aria-hidden="true">
+    <div class="rotate-card">
+      <span class="rotate-mark">↻</span>
+      <b>TURN THE MAP SIDEWAYS</b>
+      <span>Gilded Isles is best explored in landscape.</span>
+    </div>
+  </div>
+
+  <script src="js/util.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

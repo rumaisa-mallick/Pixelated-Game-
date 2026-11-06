@@ -1,0 +1,718 @@
+/* =========================================================
+   COIN QUEST — pixel UI
+   The UI layer is authored at 640x480 and scaled with JS,
+   so every pixel stays aligned with the game canvas.
+   ========================================================= */
+
+:root {
+    --ink: #07050b;
+    --panel: rgba(15, 11, 22, 0.92);
+    --panel-2: #1d1528;
+    --gold: #e3b64d;
+    --gold-bright: #ffdf85;
+    --gold-dim: #8d6c2f;
+    --cream: #ffeccd;
+    --muted: #9c8fa8;
+    --accent: #e14b5a;
+    --teal: #63e3dd;
+    --border: #3d2f4a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background-color: #07050b;
+    background-image:
+        radial-gradient(circle at 50% 20%, rgba(227, 182, 77, 0.06), transparent 55%),
+        radial-gradient(circle at 15% 85%, rgba(87, 214, 208, 0.05), transparent 45%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 6px);
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    color: var(--cream);
+    -webkit-font-smoothing: none;
+    user-select: none;
+}
+
+#stage {
+    position: relative;
+    width: min(96vw, calc(92vh * 4 / 3), 1080px);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #000;
+    outline: 6px solid #17101f;
+    box-shadow:
+        0 0 0 2px #050308,
+        0 0 0 8px #2a2035,
+        0 30px 90px rgba(0, 0, 0, 0.85),
+        0 0 70px rgba(227, 182, 77, 0.07);
+}
+
+#game {
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 480px;
+    transform-origin: top left;
+    pointer-events: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ---------------- CRT-ish overlays ---------------- */
+
+.fx-scanlines,
+.fx-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.fx-scanlines {
+    z-index: 5;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.16) 0px,
+        rgba(0, 0, 0, 0.16) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    opacity: 0.45;
+    mix-blend-mode: multiply;
+}
+
+.fx-vignette {
+    z-index: 6;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.42) 100%);
+}
+
+/* ---------------- Shared pixel panel ---------------- */
+
+.panel {
+    background: var(--panel);
+    border: 2px solid var(--gold-dim);
+    box-shadow:
+        0 0 0 2px #0b0711,
+        0 3px 0 #050308,
+        inset 0 0 0 1px rgba(255, 223, 133, 0.12);
+    color: var(--gold-bright);
+}
+
+/* ---------------- HUD ---------------- */
+
+#hud {
+    position: absolute;
+    inset: 0;
+    z-index: 8;
+    pointer-events: none;
+}
+
+.hud-top {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.hud-coins {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 9px;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.coin-chip {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    border: 1px solid #6b430c;
+    box-shadow:
+        inset 1px 1px 0 #ffeaa6,
+        inset -1px -1px 0 #a8751a;
+}
+
+.hud-sep {
+    display: block;
+    width: 1px;
+    height: 11px;
+    background: #6b5637;
+    margin: 0 2px;
+}
+
+.hud-unit {
+    font-size: 5.5px;
+    color: #a88f5f;
+    margin-left: -3px;
+    letter-spacing: 0.5px;
+}
+
+.hud-combo {
+    font-size: 6.5px;
+    line-height: 1;
+    color: #13201e;
+    background: var(--teal);
+    border: 1px solid #247d78;
+    padding: 4px 5px;
+    box-shadow: 0 0 10px rgba(99, 227, 221, 0.38);
+    animation: combo-pop 0.22s steps(2, end);
+}
+
+@keyframes combo-pop {
+    from { transform: scale(1.35); }
+    to { transform: scale(1); }
+}
+
+.hud-realm {
+    padding: 8px 16px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold-bright);
+    margin-top: 1px;
+}
+
+.hud-actions {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.hud-timer {
+    padding: 8px 10px;
+    font-size: 8px;
+    letter-spacing: 1px;
+    min-width: 62px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.pixel-icon {
+    width: 30px;
+    height: 29px;
+    font-family: inherit;
+    font-size: 6.5px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    color: var(--gold);
+    background: #1d1528;
+    border: 2px solid var(--gold-dim);
+    box-shadow:
+        0 0 0 2px #0b0711,
+        0 3px 0 #050308;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background 0.08s, color 0.08s;
+}
+
+.pixel-icon:hover {
+    background: #2d203b;
+    color: var(--gold-bright);
+}
+
+.pixel-icon.is-muted {
+    opacity: 0.4;
+}
+
+/* ---------------- Minimap ---------------- */
+
+.minimap-wrap {
+    position: absolute;
+    top: 56px;
+    right: 10px;
+    width: 136px;
+    padding: 5px;
+    line-height: 0;
+    pointer-events: none;
+}
+
+.minimap-label {
+    font-size: 5.5px;
+    line-height: 1;
+    color: #a88f5f;
+    letter-spacing: 1px;
+    text-align: right;
+    margin-bottom: 4px;
+    padding-top: 1px;
+}
+
+#minimap {
+    display: block;
+    width: 120px;
+    height: 88px;
+    image-rendering: pixelated;
+    background: #000;
+    border: 1px solid #33263f;
+}
+
+/* ---------------- Map tabs ---------------- */
+
+.map-nav {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    pointer-events: none;
+}
+
+.map-tab {
+    font-family: inherit;
+    font-size: 7px;
+    letter-spacing: 0.5px;
+    padding: 8px 11px;
+    color: var(--muted);
+    background: rgba(15, 11, 22, 0.94);
+    border: 2px solid var(--border);
+    box-shadow:
+        0 0 0 2px #0b0711,
+        0 3px 0 #050308;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: color 0.08s, border-color 0.08s, background 0.08s;
+}
+
+.map-tab:hover {
+    color: var(--cream);
+    border-color: #6b5878;
+}
+
+.map-tab.is-active {
+    color: #231609;
+    background: var(--gold);
+    border-color: var(--gold-bright);
+    box-shadow:
+        0 0 0 2px #0b0711,
+        0 3px 0 #050308,
+        0 0 12px rgba(227, 182, 77, 0.3);
+}
+
+/* ---------------- Screens ---------------- */
+
+.screen {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at 50% 42%, rgba(23, 16, 33, 0.62), rgba(7, 5, 11, 0.94));
+    pointer-events: auto;
+    animation: screen-in 0.18s ease-out;
+}
+
+@keyframes screen-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ---------------- Title ---------------- */
+
+.title-inner {
+    width: 570px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    padding-top: 6px;
+}
+
+.kicker {
+    font-size: 6.5px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.logo {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 12px;
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: 2px;
+    text-shadow:
+        0 2px 0 #6d4b13,
+        0 5px 0 #2a1c08,
+        0 8px 0 #0a0710,
+        0 0 26px rgba(227, 182, 77, 0.35);
+    animation: logo-float 4s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+.logo-coin {
+    color: var(--gold-bright);
+}
+
+.logo-quest {
+    color: var(--cream);
+}
+
+.tagline {
+    font-size: 6.5px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.realm-grid {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.realm-card {
+    width: 176px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: inherit;
+    text-align: left;
+    color: inherit;
+    background: #171021;
+    border: 2px solid var(--border);
+    box-shadow:
+        0 0 0 2px #0b0711,
+        0 4px 0 #050308;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.realm-card:hover,
+.realm-card:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+    outline: none;
+    box-shadow:
+        0 0 0 2px #0b0711,
+        0 6px 0 #050308,
+        0 0 24px rgba(227, 182, 77, 0.28);
+}
+
+.realm-art {
+    position: relative;
+    display: block;
+    line-height: 0;
+    overflow: hidden;
+    border-bottom: 2px solid #2a2035;
+    background: #0d0913;
+}
+
+.realm-preview {
+    display: block;
+    width: 168px;
+    height: 124px;
+    image-rendering: pixelated;
+    filter: saturate(0.85) brightness(0.82);
+    transition: filter 0.15s ease;
+}
+
+.realm-card:hover .realm-preview,
+.realm-card:focus-visible .realm-preview {
+    filter: saturate(1.05) brightness(1);
+}
+
+.realm-num {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 6px;
+    line-height: 1;
+    color: var(--gold-bright);
+    background: rgba(9, 6, 13, 0.85);
+    border: 1px solid #6b5122;
+    padding: 3px 4px;
+}
+
+.realm-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 7px 8px 8px;
+}
+
+.realm-name {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--gold-bright);
+}
+
+.realm-desc {
+    font-size: 5.5px;
+    line-height: 1.5;
+    color: var(--muted);
+    letter-spacing: 0.2px;
+}
+
+.realm-best {
+    font-size: 5.5px;
+    color: var(--teal);
+    letter-spacing: 0.5px;
+    margin-top: 1px;
+}
+
+.start-hint {
+    margin-top: 7px;
+    font-size: 7px;
+    letter-spacing: 1px;
+    color: var(--cream);
+    text-shadow: 2px 2px 0 #000;
+    animation: blink 1.6s steps(2, end) infinite;
+}
+
+@keyframes blink {
+    0%, 60% { opacity: 1; }
+    61%, 100% { opacity: 0.35; }
+}
+
+.key-hints {
+    font-size: 5.5px;
+    line-height: 1.6;
+    color: #7d7090;
+    letter-spacing: 0.3px;
+}
+
+.key-hints span {
+    color: var(--gold);
+}
+
+.title-total {
+    font-size: 5.5px;
+    color: #b49a6a;
+    letter-spacing: 0.6px;
+    margin-top: 1px;
+}
+
+/* ---------------- Modals ---------------- */
+
+.modal {
+    width: 380px;
+    padding: 18px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    box-shadow:
+        0 0 0 2px #0b0711,
+        0 6px 0 #050308,
+        inset 0 0 0 1px rgba(255, 223, 133, 0.12),
+        0 0 50px rgba(0, 0, 0, 0.6);
+}
+
+.modal-kicker {
+    font-size: 6px;
+    letter-spacing: 2px;
+    color: var(--gold);
+}
+
+.modal-title {
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    color: var(--gold-bright);
+    text-shadow: 0 3px 0 #6d4b13, 0 6px 0 #0a0710;
+}
+
+.modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 2px;
+}
+
+.modal-hint {
+    font-size: 5.5px;
+    color: #7d7090;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+}
+
+.pixel-btn {
+    font-family: inherit;
+    font-size: 7px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    padding: 9px 11px;
+    color: var(--cream);
+    background: #241a2e;
+    border: 2px solid #6b5878;
+    box-shadow:
+        0 0 0 2px #0b0711,
+        0 3px 0 #050308;
+    cursor: pointer;
+    transition: color 0.08s, border-color 0.08s, background 0.08s, transform 0.05s;
+}
+
+.pixel-btn:hover {
+    color: var(--gold-bright);
+    border-color: var(--gold);
+}
+
+.pixel-btn:active {
+    transform: translateY(2px);
+    box-shadow:
+        0 0 0 2px #0b0711,
+        0 1px 0 #050308;
+}
+
+.pixel-btn.primary {
+    color: #231609;
+    background: var(--gold);
+    border-color: var(--gold-bright);
+}
+
+.pixel-btn.primary:hover {
+    color: #1a1005;
+    background: var(--gold-bright);
+}
+
+/* ---------------- Complete screen ---------------- */
+
+.complete-modal {
+    width: 400px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+}
+
+.result-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 6px;
+    background: rgba(8, 6, 12, 0.7);
+    border: 1px solid #332742;
+}
+
+.result-cell.result-wide {
+    grid-column: span 2;
+}
+
+.result-label {
+    font-size: 5.5px;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+
+.result-value {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--gold-bright);
+    text-shadow: 0 2px 0 #3a2708;
+}
+
+.new-best {
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    color: var(--teal);
+    text-shadow: 0 0 12px rgba(99, 227, 221, 0.5);
+    animation: blink 1.1s steps(2, end) infinite;
+}
+
+/* ---------------- Touch controls ---------------- */
+
+.touch-pad {
+    display: none;
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    width: 106px;
+    height: 106px;
+    grid-template-columns: repeat(3, 32px);
+    grid-template-rows: repeat(3, 32px);
+    gap: 4px;
+}
+
+.touch-pad button {
+    font-family: inherit;
+    font-size: 9px;
+    color: var(--gold-bright);
+    background: rgba(18, 13, 26, 0.72);
+    border: 2px solid rgba(141, 108, 47, 0.75);
+    border-radius: 0;
+    touch-action: none;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.touch-pad button:active {
+    background: rgba(227, 182, 77, 0.45);
+}
+
+.touch-up { grid-column: 2; grid-row: 1; }
+.touch-left { grid-column: 1; grid-row: 2; }
+.touch-down { grid-column: 2; grid-row: 2; }
+.touch-right { grid-column: 3; grid-row: 2; }
+
+@media (pointer: coarse) {
+    .touch-pad {
+        display: grid;
+    }
+
+    .map-nav {
+        bottom: 8px;
+    }
+
+    .minimap-wrap {
+        top: 52px;
+    }
+}
+
+/* Small screens: keep the HUD legible-ish and avoid overlap */
+
+@media (max-width: 760px) {
+    .minimap-wrap {
+        transform: scale(0.85);
+        transform-origin: top right;
+    }
+}
+
+@media (orientation: portrait) and (max-width: 760px) {
+    .touch-pad {
+        display: none;
+    }
+}
